@@ -13,6 +13,9 @@
   "keywords": [],
   "author": "sourav",
   "license": "MIT",
+  "engines": {
+    "node": ">=14.20.1"
+  },
   "dependencies": {
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
