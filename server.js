@@ -40,7 +40,9 @@ app.use(morgan("dev"));
 //   origin:true,
 //   credentials:true,
 // }));
-app.use(cors())
+app.use(cors({
+  origin: "https://people-republic.web.app"
+}));
 
 app.use(express.static("public"));
 
