@@ -41,7 +41,8 @@ app.use(morgan("dev"));
 //   credentials:true,
 // }));
 app.use(cors({
-  origin: "https://people-republic.web.app"
+  origin: "http://localhost:3000",
+  credentials: true
 }));
 
 app.use(express.static("public"));
