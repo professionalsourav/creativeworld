@@ -41,7 +41,7 @@ app.use(morgan("dev"));
 //   credentials:true,
 // }));
 app.use(cors({
-  origin: "http://localhost:3000",
+  origin: "https://6522548047086d0553413ccc--thriving-medovik-77cc94.netlify.app",
   credentials: true
 }));
 
