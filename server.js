@@ -40,12 +40,12 @@ app.use(morgan("dev"));
 //   origin:true,
 //   credentials:true,
 // }));
-app.use(cors({
-  origin: "https://6522548047086d0553413ccc--thriving-medovik-77cc94.netlify.app",
-  credentials: true
-}));
+// app.use(cors({
+//   origin: "http://localhost:3000",
+//   credentials: true
+// }));
 
-app.use(express.static("public"));
+app.use(express.static("build"));
 
 
 //routes
