@@ -9,6 +9,7 @@ import userRouter from "./routes/Users.js";
 import commentRouter from "./routes/Comments.js";
 import videoRouter from "./routes/Videos.js";
 import cookieParser from "cookie-parser";
+import protectrouter from "./routes/Protect.js";
 
 // import session from 'express-session';
 
@@ -26,6 +27,7 @@ const app = express();
 app.use(cookieParser())
 app.use(express.json());
 app.use(morgan("dev"));
+app.use(cors());
 // app.use(session({
 //   secret: process.env.JWT, // Replace with a strong, secret key
 //   resave: false,
@@ -53,6 +55,7 @@ app.use("/api/v1/auth", authRoutes);
 app.use("/api/users", userRouter);
 app.use("/api/comments", commentRouter);
 app.use("/api/videos",videoRouter);
+app.use("/api/protect", protectrouter)
 
 //error handler
 app.use((err, req, res, next) => {

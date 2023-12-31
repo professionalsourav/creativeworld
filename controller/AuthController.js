@@ -14,7 +14,7 @@ export const signup = async (req, res, next) => {
     const newUser = new User({ ...req.body, password: hash });
 
     await newUser.save();
-    res.status(200).send("User has been created!");
+    res.status(201).send("User has been created!");
   } catch (err) {
     next(err);
   }
@@ -52,7 +52,8 @@ export const googleAuth = async (req, res, next) => {
     const user = await User.findOne({ email: req.body.email });
     if (user) {
       const token = jwt.sign({ id: user._id }, process.env.JWT);
-      res
+      
+      return res
         .cookie("access_token", token, {
           httpOnly: true,
           
@@ -66,7 +67,7 @@ export const googleAuth = async (req, res, next) => {
       });
       const savedUser = await newUser.save();
       const token = jwt.sign({ id: savedUser._id }, process.env.JWT);
-      res
+      return res
         .cookie("access_token", token, {
           httpOnly: true,
          

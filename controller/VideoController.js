@@ -102,7 +102,7 @@ export const addVideo = async (req, res, next) => {
       const list = await Promise.all(
         subscribedChannels.map(async (channelId) => {
           return await Video.find({ userId: channelId });
-        })
+        }) 
       );
   
       res.status(200).json(list.flat().sort((a, b) => b.createdAt - a.createdAt));
@@ -134,3 +134,31 @@ export const addVideo = async (req, res, next) => {
       next(err);
     }
   };
+
+  export const getallVideo = async(req,res) => {
+
+    try {
+      const videos = await Video.find({});
+      return res.status(200).json({
+        count: videos.length,
+        data: videos
+      })
+      
+    } catch (error) {
+      console.log(error.message);
+      res.status(500).json({message : error.message})
+    }
+
+  };
+
+  export const getoneVideo = async(req,res) =>{
+    try {
+      const {id} = req.params;
+      const video = await Video.findById(id);
+      return res.status(200).json(video)
+      
+    } catch (error) {
+      console.log(error.message);
+      res.status(500).json({message:error.message})
+    }
+  }
